@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow</title>
+  <style>
+    :root {
+      --width: 1280px;
+      --height: 720px;
+      --aspect-ratio: 16 / 9;
+      --origin-x: 50%;
+      --origin-y: 50%;
+      --duration: calc(2 * 4s);
+    }
+
+    html {
+      height: 99vh;
+      height: 99svh;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: gray;
+      height: 99vh;
+      height: 99svh;
+      display: grid;
+      place-content: center;
+    }
+
+    .container {
+      margin-inline: auto;
+      margin-block: auto;
+      width: 100vw;
+      max-width: var(--width);
+      aspect-ratio: var(--aspect-ratio);
+      background-color: black;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container>div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .container>div>div {
+      width: 100%;
+      aspect-ratio: var(--aspect-ratio);
+    }
+    .container>div>img,
+    .container>div>div {
+      opacity: 0;
+      animation: zoom var(--duration) 1 forwards;
+      transform-origin: var(--origin-x, 50%) var(--origin-y, 50%);
+      --start: calc(var(--duration) * (var(--n, 0) - 1));
+      animation-delay: calc(var(--start) - (var(--n, 0) - 1) * 1s);
+    }
+
+    .container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .container>div:nth-of-type(1) {
+      --n: 1;
+      --origin-x: 100%;
+      --origin-y: 50%;
+      --zoom-from: scale(1);
+      --zoom-to: scale(1.6);
+    }
+
+    .container>div:nth-of-type(2) {
+      --n: 2;
+      --origin-x: 50%;
+      --origin-y: 0%;
+      --zoom-from: scale(1.4);
+      --zoom-to: scale(1);
+    }
+
+    .container>div:nth-of-type(3) {
+      --n: 3;
+      --origin-x: 0%;
+      --origin-y: 100%;
+      --zoom-from: scale(1);
+      --zoom-to: scale(1.8);
+    }
+
+    .container>div:nth-of-type(4) {
+      --n: 4;
+      --origin-x: 20%;
+      --origin-y: 20%;
+      --zoom-from: scale(1.1);
+      --zoom-to: scale(1.8);
+    }
+
+    .container>div:nth-of-type(5) {
+      --n: 5;
+      --origin-x: 80%;
+      --origin-y: 80%;
+      --zoom-from: scale(1.8);
+      --zoom-to: scale(1);
+    }
+
+    .container>div:nth-of-type(6) {
+      --n: 6;
+    }
+    .container>div:nth-of-type(7) {
+      --n: 7;
+    }
+    .container>div:nth-of-type(8) {
+      --n: 8;
+    }
+    @keyframes zoom {
+      from {
+        opacity: 0;
+        transform: var(--zoom-from);
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      to {
+        transform: var(--zoom-to);
+        opacity: 0;
+      }
+    }
+
+    .checker {
+      /* https://spc-jpn.co.jp/blog/15844/ */
+      --size: var(--checker-size, 160px);
+      --color1: var(--checker-color1, #333);
+      --color2: var(--checker-color2, #3a3);
+      background:
+        linear-gradient(45deg, var(--color1) 25%, transparent 25%, transparent 75%, var(--color1) 75%),
+        linear-gradient(45deg, var(--color1) 25%, transparent 25%, transparent 75%, var(--color1) 75%);
+      background-size:
+        var(--size) var(--size);
+      background-position:
+        0 0,
+        calc(.5 * var(--size)) calc(.5 * var(--size));
+      background-color: var(--color2);
+    }
+
+    .blackandyellow {
+      --checker-size: 240px;
+      --checker-color2: yellow;
+    }
+
+    .seigai {
+      /* https://little-strange.hatenablog.com/entry/2022/01/10/212905 */
+      --size: var(--seigai-size, 80px);
+      --color1: var(--seigai-color1, white);
+      --color2: var(--seigai-color2, blue);
+      background:
+        radial-gradient(var(--size) circle at 50% 150%, var(--color1) 0% 12.5%, var(--color2) 12.5% 25%, var(--color1) 25% 37.5%, var(--color2) 37.5% 50%, var(--color1) 50% 62.5%, var(--color2) 62.5% 75%, var(--color1) 75% 87.5%, var(--color2) 87.5% 99.9%, transparent 99.9% 100%) var(--size) 0px/calc(2 * var(--size)) var(--size), radial-gradient(var(--size) circle at 50% 100%, var(--color1) 0% 12.5%, var(--color2) 12.5% 25%, var(--color1) 25% 37.5%, var(--color2) 37.5% 50%, var(--color1) 50% 62.5%, var(--color2) 62.5% 75%, var(--color1) 75% 87.5%, var(--color2) 87.5% 99.9%, transparent 99.9% 100%) 0px 0px/calc(2 * var(--size)) var(--size), radial-gradient(var(--size) circle at 50% 100%, var(--color1) 0% 12.5%, var(--color2) 12.5% 25%, var(--color1) 25% 37.5%, var(--color2) 37.5% 50%, var(--color1) 50% 62.5%, var(--color2) 62.5% 75%, var(--color1) 75% 87.5%, var(--color2) 87.5% 99.9%, transparent 99.9% 100%) var(--size) calc(.5 * var(--size))/calc(2 * var(--size)) var(--size);
+    }
+
+    .chidori {
+      /* https://little-strange.hatenablog.com/entry/2022/01/09/222713 */
+      --size: var(--chidri-size, 120px);
+      --color1: var(--chidori-color1, black);
+      --color2: var(--chidori-color2, white);
+      background:
+        conic-gradient(transparent 0deg 90deg, var(--color1) 90deg 180deg, transparent 180deg 270deg, var(--color2) 270deg 360deg) 0px 0px/var(--size) var(--size), linear-gradient(45deg, var(--color2) 0% 12.5%, var(--color1) 12.5% 25%, var(--color2) 25% 37.5%, var(--color1) 37.5% 62.5%, var(--color2) 62.5% 75%, var(--color1) 75% 87.5%, var(--color2) 87.5% 100%) 0px 0px/var(--size) var(--size);
+    }
+
+    .fundou {
+      /* https://little-strange.hatenablog.com/entry/2022/01/08/234632 */
+      --size: var(--fundou-size, 80px);
+      --color1: var(--fundou-color1, black);
+      --color2: var(--fundou-color2, white);
+      background:
+        radial-gradient(farthest-side circle at 100% 100%, transparent 45%, var(--color1) 45% 50%, transparent 50%) 0px 0px/calc(2 * var(--size)) calc(2 * var(--size)), radial-gradient(farthest-side circle at 0% 0%, transparent 45%, var(--color1) 45% 50%, transparent 50%) 0px 0px/calc(2 * var(--size)) calc(2 * var(--size)), radial-gradient(farthest-side circle at 100% 0%, transparent 45%, var(--color1) 45% 50%, transparent 50%) var(--size) var(--size)/calc(2 * var(--size)) calc(2 * var(--size)), radial-gradient(farthest-side circle at 0% 100%, transparent 45%, var(--color1) 45% 50%, transparent 50%) var(--size) var(--size)/calc(2 * var(--size)) calc(2 * var(--size)), var(--color2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <div class="checker blackandyellow"></div>
+    </div>
+    <div>
+      <div class="chidori"></div>
+    </div>
+    <div>
+      <div class="seigai"></div>
+    </div>
+    <div>
+      <div class="fundou"></div>
+    </div>
+    <div>
+      <div class="checker"></div>
+    </div>
+  </div>
+</body>
+
+</html>
