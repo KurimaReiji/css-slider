@@ -1,5 +1,7 @@
 # css-slider
 
+- https://kurimareiji.github.io/css-slider/
+
 ## Resources
 
 - [CSSで市松模様を作ろう | ホームページ制作・Webマーケティング｜株式会社SPC](https://spc-jpn.co.jp/blog/15844/)
