@@ -1,6 +1,7 @@
 # css-slider
 
 - https://kurimareiji.github.io/css-slider/
+- https://kurimareiji.github.io/css-slider/ichiro2019.html
 
 ## Resources
 

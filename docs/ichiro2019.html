@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow</title>
+  <style>
+    :root {
+      --width: 1280px;
+      --height: 720px;
+      --aspect-ratio: 16 / 9;
+      --origin-x: 50%;
+      --origin-y: 50%;
+      --duration: calc(2 * 4s);
+    }
+
+    html {
+      height: 99vh;
+      height: 99svh;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: gray;
+      height: 99vh;
+      height: 99svh;
+      display: grid;
+      place-content: center;
+    }
+
+    .container {
+      margin-inline: auto;
+      margin-block: auto;
+      width: 100vw;
+      max-width: var(--width);
+      aspect-ratio: var(--aspect-ratio);
+      background-color: black;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container>div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .container>div>div {
+      width: 100%;
+      aspect-ratio: var(--aspect-ratio);
+    }
+    .container>div>img,
+    .container>div>div {
+      opacity: 0;
+      animation: zoom var(--duration) 1 forwards;
+      transform-origin: var(--origin-x, 50%) var(--origin-y, 50%);
+      --start: calc(var(--duration) * (var(--n, 0) - 1));
+      animation-delay: calc(var(--start) - (var(--n, 0) - 1) * 1s);
+    }
+
+    .container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .container>div:nth-of-type(1) {
+      --n: 1;
+    }
+
+    .container>div:nth-of-type(2) {
+      --n: 2;
+    }
+
+    .container>div:nth-of-type(3) {
+      --n: 3;
+    }
+    .container>div:nth-of-type(4) {
+      --n: 4;
+    }
+    .container>div:nth-of-type(5) {
+      --n: 5;
+    }
+    .container>div:nth-of-type(6) {
+      --n: 6;
+    }
+    .container>div:nth-of-type(7) {
+      --n: 7;
+    }
+    .container>div:nth-of-type(8) {
+      --n: 8;
+    }
+    .container>div:nth-of-type(9) {
+      --n: 9;
+    }
+    @keyframes zoom {
+      from {
+        opacity: 0;
+        transform: var(--zoom-from);
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      82% {
+        transform: var(--zoom-to);
+      }
+      85% {
+        opacity: 1;
+      }
+      to {
+        transform: var(--zoom-to);
+        opacity: 0;
+      }
+    }
+
+    .ichiro1 {
+      --origin-x: 65%;
+      --origin-y: 30%;
+      --zoom-from: scale(2);
+      --zoom-to: scale(1);
+    } 
+
+    .ichiro2 {
+      --origin-x: 60%;
+      --origin-y: 40%;
+      --zoom-from: scale(1.4);
+      --zoom-to: scale(2);
+    }
+    .ichiro3 {
+      --origin-x: 50%;
+      --origin-y: 65%;
+      --zoom-from: scale(1);
+      --zoom-to: scale(1.6);
+    }
+    .ichiro4 {
+      --origin-x: 55%;
+      --origin-y: 65%;
+      --zoom-from: scale(1.8);
+      --zoom-to: scale(1);
+    }
+    .ichiro5 {
+      --origin-x: 50%;
+      --origin-y: 40%;
+      --zoom-from: scale(3);
+      --zoom-to: scale(1.2);
+    }
+    .ichiro6 {
+      --origin-x: 55%;
+      --origin-y: 40%;
+      --zoom-from: scale(1);
+      --zoom-to: scale(1.8);
+    }
+    .ichiro7 {
+      --origin-x: 35%;
+      --origin-y: 0%;
+      --zoom-from: scale(1);
+      --zoom-to: scale(2.4);
+    }
+    .ichiro8 {
+      --origin-x: 40%;
+      --origin-y: 100%;
+      --zoom-from: scale(2.4);
+      --zoom-to: scale(1);
+    }
+    .ichiro9 {
+      --origin-x: 40%;
+      --origin-y: 25%;
+      --zoom-from: scale(1);
+      --zoom-to: scale(2.4);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="ichiro1"><img src="ichiro1.jpg"></div>
+    <div class="ichiro2"><img src="ichiro2.jpg"></div>
+    <div class="ichiro3"><img src="ichiro3.jpg"></div>
+    <div class="ichiro4"><img src="ichiro4.jpg"></div>
+    <div class="ichiro5"><img src="ichiro5.jpg"></div>
+    <div class="ichiro6"><img src="ichiro6.jpg"></div>
+    <div class="ichiro7"><img src="ichiro7.jpg"></div>
+    <div class="ichiro8"><img src="ichiro8.jpg"></div>
+    <div class="ichiro9"><img src="ichiro9.jpg"></div>
+  </div>
+</body>
+
+</html>
